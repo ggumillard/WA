@@ -487,7 +487,7 @@ export default function CareerPage() {
               <div className="w-100">
                 <p className="login_btn">
                   Already have a Career Profile?
-                  <a href="https://recruit.waemployment.com/login">Log in</a>
+                  <a href="/login">Log in</a>
                 </p>
               </div>
             </form>

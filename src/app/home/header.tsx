@@ -36,28 +36,28 @@ export default function Header() {
           <div className="rightSide">
             <ul>
               <li>
-                <a href="https://recruit.waemployment.com/login">Jobs</a>
+                <a href="/login">Jobs</a>
               </li>
               <li>
-                <a href="https://recruit.waemployment.com/login">
+                <a href="/login">
                   Areas of Work
                 </a>
               </li>
               <li>
-                <a href="https://recruit.waemployment.com/login">Locations</a>
+                <a href="/login">Locations</a>
               </li>
               <li>
-                <a href="https://recruit.waemployment.com/login">
+                <a href="/login">
                   Career Programs
                 </a>
               </li>
               <li>
-                <a href="https://recruit.waemployment.com/login">
+                <a href="/login">
                   How We Work
                 </a>
               </li>
               <li>
-                <a href="https://recruit.waemployment.com/login">Blog</a>
+                <a href="/login">Blog</a>
               </li>
             </ul>
             <div className="searchIcon">
@@ -87,32 +87,32 @@ export default function Header() {
         </button>
         <ul>
           <li>
-            <a href="https://recruit.waemployment.com/login" target="_blank">
+            <a href="/login" target="_blank">
               Jobs
             </a>
           </li>
           <li>
-            <a href="https://recruit.waemployment.com/login" target="_blank">
+            <a href="/login" target="_blank">
               Areas of Work
             </a>
           </li>
           <li>
-            <a href="https://recruit.waemployment.com/login" target="_blank">
+            <a href="/login" target="_blank">
               Locations
             </a>
           </li>
           <li>
-            <a href="https://recruit.waemployment.com/login" target="_blank">
+            <a href="/login" target="_blank">
               Career Programs
             </a>
           </li>
           <li>
-            <a href="https://recruit.waemployment.com/login" target="_blank">
+            <a href="/login" target="_blank">
               How We Work
             </a>
           </li>
           <li>
-            <a href="https://recruit.waemployment.com/login" target="_blank">
+            <a href="/login" target="_blank">
               Blog
             </a>
           </li>
@@ -123,13 +123,13 @@ export default function Header() {
           the interview process, and more.
         </p>
         <a
-          href={"createcareer"}
+          href={"/login"}
           className="startNow"
         >
           Create Career Profile
         </a>
         <p>Already have a Career Profile?</p>
-        <a href="https://recruit.waemployment.com/login" className="login">
+        <a href="/login" className="login">
           Log in
         </a>
       </div>
@@ -140,13 +140,13 @@ export default function Header() {
           the interview process, and more.
         </p>
         <a
-          href={"createcareer"}
+          href={"/login"}
           className="create-career"
         >
           Create Career Profile
         </a>
         <p>Already have a Career Profile?</p>
-        <a href="https://recruit.waemployment.com/login" className="login">
+        <a href="/login" className="login">
           Log in
         </a>
       </div>

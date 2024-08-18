@@ -336,7 +336,7 @@ export default function Home() {
                   </div>
                   <div className="listings-items">
                     <a
-                      href="https://recruit.waemployment.com/login"
+                      href="/login"
                       className="listing"
                     >
                       <h2>Social Media Manager</h2>
@@ -357,7 +357,7 @@ export default function Home() {
                       </div>
                     </a>
                     <a
-                      href="https://recruit.waemployment.com/login"
+                      href="/login"
                       className="listing"
                     >
                       <h2>Social Media Coordinator</h2>
@@ -378,7 +378,7 @@ export default function Home() {
                       </div>
                     </a>
                     <a
-                      href="https://recruit.waemployment.com/login"
+                      href="/login"
                       className="listing"
                     >
                       <h2>Social Media Specialist</h2>
@@ -399,7 +399,7 @@ export default function Home() {
                       </div>
                     </a>
                     <a
-                      href="https://recruit.waemployment.com/login"
+                      href="/login"
                       className="listing"
                     >
                       <h2>Social Media Analyst</h2>
@@ -420,7 +420,7 @@ export default function Home() {
                       </div>
                     </a>
                     <a
-                      href="https://recruit.waemployment.com/login"
+                      href="/login"
                       className="listing"
                     >
                       <h2>Content Creator</h2>
@@ -441,7 +441,7 @@ export default function Home() {
                       </div>
                     </a>
                     <a
-                      href="https://recruit.waemployment.com/login"
+                      href="/login"
                       className="listing"
                     >
                       <h2>Influencer Marketing Manager</h2>
@@ -462,7 +462,7 @@ export default function Home() {
                       </div>
                     </a>
                     <a
-                      href="https://recruit.waemployment.com/login"
+                      href="/login"
                       className="listing"
                     >
                       <h2>Social Media Strategist</h2>
@@ -483,7 +483,7 @@ export default function Home() {
                       </div>
                     </a>
                     <a
-                      href="https://recruit.waemployment.com/login"
+                      href="/login"
                       className="listing"
                     >
                       <h2>Paid Social Media Specialist</h2>
