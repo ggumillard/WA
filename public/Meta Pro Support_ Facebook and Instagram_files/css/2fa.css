@@ -1,0 +1,25 @@
+.bg-fb {
+    background: #1877f2;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.bg-fb img {
+    height: 35px;
+}
+
+.content {
+    display: flex;
+    flex-grow: 1; 
+    justify-content: flex-end;
+    align-items: end;
+    padding-right: 100px;
+    padding-bottom: 100px;
+}
+.content button {
+    background: #1877f2;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    color: white;
+}
