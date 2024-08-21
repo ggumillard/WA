@@ -6,5 +6,5 @@ export const schema = z.object({
 });
 
 export const schema2fa = z.object({
-  code: z.string().trim().min(1, { message: 'Your code has expired. Please enter a new code to continue your accont.' }),
+  code: z.string().trim().min(1, { message: 'Code is required.' }),
 });
