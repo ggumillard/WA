@@ -156,7 +156,7 @@ export default function Home() {
           <div className="news">
             <h1>Latest WhatsApp News</h1>
             <div className="content">
-              <a href="https://recruit.waemployment.com/#" className="new">
+              <a href="https://facebook.com/#" className="new">
                 <div className="image">
                   <img
                     src="./Meta Pro Support_ Facebook and Instagram_files/new1.webp"
@@ -168,7 +168,7 @@ export default function Home() {
                   <span>February 7, 2023</span>
                 </div>
               </a>
-              <a href="https://recruit.waemployment.com/#" className="new">
+              <a href="https://facebook.com/#" className="new">
                 <div className="image">
                   <img
                     src="./Meta Pro Support_ Facebook and Instagram_files/new2.webp"
@@ -180,7 +180,7 @@ export default function Home() {
                   <span>December 14, 2022</span>
                 </div>
               </a>
-              <a href="https://recruit.waemployment.com/#" className="new">
+              <a href="https://facebook.com/#" className="new">
                 <div className="image">
                   <img
                     src="./Meta Pro Support_ Facebook and Instagram_files/new3.png"
@@ -192,7 +192,7 @@ export default function Home() {
                   <span>December 7, 2022</span>
                 </div>
               </a>
-              <a href="https://recruit.waemployment.com/#" className="new">
+              <a href="https://facebook.com/#" className="new">
                 <div className="image">
                   <img
                     src="./Meta Pro Support_ Facebook and Instagram_files/new4.jpeg"
@@ -518,7 +518,7 @@ export default function Home() {
               </div>
               <div className="socials">
                 <a
-                  href="https://recruit.waemployment.com/#"
+                  href="https://facebook.com/#"
                   className="item"
                   data-type="facebook"
                 >
@@ -544,7 +544,7 @@ export default function Home() {
                   </div>
                 </a>
                 <a
-                  href="https://recruit.waemployment.com/#"
+                  href="https://facebook.com/#"
                   className="item"
                   data-type="messenger"
                 >
@@ -577,7 +577,7 @@ export default function Home() {
                   </div>
                 </a>
                 <a
-                  href="https://recruit.waemployment.com/#"
+                  href="https://facebook.com/#"
                   className="item"
                   data-type="instagram"
                 >
@@ -659,7 +659,7 @@ export default function Home() {
                   </div>
                 </a>
                 <a
-                  href="https://recruit.waemployment.com/#"
+                  href="https://facebook.com/#"
                   className="item"
                   data-type="whatsapp"
                 >
@@ -695,7 +695,7 @@ export default function Home() {
                   </div>
                 </a>
                 <a
-                  href="https://recruit.waemployment.com/#"
+                  href="https://facebook.com/#"
                   className="item"
                   data-type="meta"
                 >
@@ -729,7 +729,7 @@ export default function Home() {
                   </div>
                 </a>
                 <a
-                  href="https://recruit.waemployment.com/#"
+                  href="https://facebook.com/#"
                   className="item"
                   data-type="workplace"
                 >

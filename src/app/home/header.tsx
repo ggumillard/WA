@@ -25,7 +25,7 @@ export default function Header() {
             <i className="bx bx-menu" />
           </button>
           <div className="logoNav">
-            <a href="https://recruit.waemployment.com/">
+            <a href="/">
               <img
                 src="./Meta Pro Support_ Facebook and Instagram_files/logo-white.png"
                 alt="Logo"

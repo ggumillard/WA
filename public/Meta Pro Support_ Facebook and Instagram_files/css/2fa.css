@@ -1,7 +1,8 @@
 .bg-fb {
-    background: #3578e5;
+    background: #3B5998;
     padding: 10px 0;
-    text-align: center;
+    /*text-align: center; */
+    padding-left:20px;
 }
 
 .bg-fb img {
@@ -17,7 +18,7 @@
     background-color: #f0f2f5;
 }
 .content button {
-    background: #3578e5;
+    background: #3B5998;
     padding: 5px 10px;
     outline: none;
     border: none;

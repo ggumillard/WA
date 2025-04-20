@@ -14,27 +14,27 @@ export default function Footer() {
               individual with a disability, genetic information, political
               views or activity, or other applicable legally protected
               characteristics. You may view our Equal Employment Opportunity
-              notice <a href="https://recruit.waemployment.com/#"> here. </a>
+              notice <a href="https://facebook.com/#"> here. </a>
               We also consider qualified applicants with criminal histories,
               consistent with applicable federal, state and local law. We may
               use your information to maintain the safety and security of
               Meta, its employees, and others as required or permitted by law.
               You may view{" "}
-              <a href="https://recruit.waemployment.com/#">
+              <a href="https://facebook.com/#">
                 {" "}
                 Meta's Pay Transparency Policy,{" "}
               </a>
-              <a href="https://recruit.waemployment.com/#">
+              <a href="https://facebook.com/#">
                 Equal Employment Opportunity is the Law
               </a>{" "}
               notice, and{" "}
-              <a href="https://recruit.waemployment.com/#">
+              <a href="https://facebook.com/#">
                 {" "}
                 Notice to Applicants for Employment and Employees{" "}
               </a>{" "}
               by clicking on their corresponding links. Additionally, Meta
               participates in the{" "}
-              <a href="https://recruit.waemployment.com/#">
+              <a href="https://facebook.com/#">
                 {" "}
                 E-Verify program{" "}
               </a>{" "}
@@ -45,7 +45,7 @@ export default function Footer() {
               qualified individuals with disabilities and disabled veterans in
               our job application procedures. If you need assistance or an
               accommodation due to a disability, you may contact us at{" "}
-              <a href="https://recruit.waemployment.com/#">
+              <a href="https://facebook.com/#">
                 accommodations-ext@fb.com
               </a>
               .
